@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Dashboard - Cinemax</title>
+  <!-- The font files come from a second host, so the connection to it is opened
+       while the page is still parsing rather than after the stylesheet lands. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/cinemax.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <nav class="menu"></nav>
+      <div class="auth-buttons"></div>
+    </div>
+  </header>
+
+  <main class="admin-page">
+
+    <h1>Staff Dashboard</h1>
+    <p class="admin-intro">Earnings and snack orders.</p>
+
+    <!-- Staff menu, drawn from what this account is allowed to open -->
+    <nav class="admin-menu"></nav>
+
+    <p class="form-message hidden" id="page-message"></p>
+
+    <!-- Earnings -->
+    <div class="stat-row">
+
+      <div class="stat stat-money">
+        <p class="stat-name">Total Revenue</p>
+        <p class="stat-figure" id="total-revenue">—</p>
+        <p class="stat-extra">Tickets plus snacks</p>
+      </div>
+
+      <div class="stat">
+        <p class="stat-name">Ticket Sales</p>
+        <p class="stat-figure" id="ticket-revenue">—</p>
+        <p class="stat-extra" id="tickets-sold">&nbsp;</p>
+      </div>
+
+      <div class="stat">
+        <p class="stat-name">Snack Sales</p>
+        <p class="stat-figure" id="snack-revenue">—</p>
+        <p class="stat-extra" id="snacks-sold">&nbsp;</p>
+      </div>
+
+    </div>
+
+    <!-- Snack orders -->
+    <section class="panel">
+
+      <h2>Snack orders</h2>
+      <p class="panel-note" id="orders-note">Change the dropdown on an order and it moves to that group.</p>
+
+      <p class="loading-note" id="orders-loading">Loading the counter queue…</p>
+
+      <div class="order-group">
+        <h3 class="order-group-title">Preparing <span class="order-count count-preparing" id="count-preparing">0</span></h3>
+        <p class="empty-note hidden" id="empty-preparing">Nothing being prepared</p>
+        <div id="group-preparing"></div>
+      </div>
+
+      <div class="order-group">
+        <h3 class="order-group-title">Ready <span class="order-count count-ready" id="count-ready">0</span></h3>
+        <p class="empty-note hidden" id="empty-ready">Nothing waiting at the counter</p>
+        <div id="group-ready"></div>
+      </div>
+
+      <div class="order-group">
+        <h3 class="order-group-title">Sold <span class="order-count count-sold" id="count-sold">0</span></h3>
+        <p class="empty-note hidden" id="empty-sold">Nothing handed over yet</p>
+        <div id="group-sold"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <p class="footer-text">
+        Your next movie experience starts here. <br>
+        Book your seats, enjoy your snacks, and let the show begin.
+      </p>
+      <p class="footer-copyright">© 2026 Cinemax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

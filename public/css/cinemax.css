@@ -1,0 +1,1563 @@
+/* Cinemax stylesheet.
+ *
+ * Every page used to carry its own copy of these rules, so changing the red
+ * accent meant editing thirteen files. They live here once now.
+ */
+
+/* ============================================================
+   Home page: the movie grid
+   ============================================================ */
+
+/* Styles that every page of the website uses */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background-color: #f9fafb;
+  color: #101828;
+  font-family: 'Outfit', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 900;
+  line-height: 1.2;
+}
+p {
+  margin: 0;
+}
+a {
+  color: #fb2c36;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button-red {
+  background-color: #fb2c36;
+  color: #ffffff;
+}
+.button-red:hover {
+  background-color: #e7000b;
+}
+.button-outline {
+  background-color: #ffffff;
+  color: #101828;
+  border: 1px solid #e5e7eb;
+  font-weight: 600;
+}
+.button-outline:hover {
+  background-color: #f9fafb;
+}
+.button-grey {
+  background-color: #e5e7eb;
+  color: #99a1af;
+}
+.button-wide {
+  display: block;
+  width: 100%;
+}
+
+/* Top bar */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f3f4f6;
+}
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1280px;
+  width: 96%;
+  height: 64px;
+  margin: 0 auto;
+}
+.logo {
+  color: #101828;
+  font-size: 20px;
+  font-weight: 900;
+  text-decoration: none;
+}
+.menu {
+  display: flex;
+  gap: 2px;
+}
+.menu a {
+  padding: 8px 16px;
+  border-radius: 12px;
+  color: #6a7282;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.menu a:hover {
+  background-color: #f9fafb;
+  color: #101828;
+}
+.menu a.current {
+  background-color: #fef2f2;
+  color: #fb2c36;
+}
+.auth-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 36px 20px 28px 20px;
+}
+.footer-inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+.footer-inner .logo {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.footer-text {
+  color: #6a7282;
+  font-size: 13px;
+}
+.footer-copyright {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+  color: #99a1af;
+  font-size: 12px;
+}
+@media (max-width: 620px) {
+  .top-bar-inner {
+    width: 94%;
+    height: 58px;
+    gap: 4px;
+  }
+
+  .logo {
+    font-size: 15px;
+  }
+
+  .menu a {
+    padding: 6px 5px;
+    font-size: 12px;
+  }
+
+  .auth-buttons .button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .menu a,
+  .auth-buttons .button {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 380px) {
+  .logo {
+    font-size: 14px;
+  }
+
+  .menu a {
+    padding: 6px 2px;
+    font-size: 11px;
+  }
+
+  .auth-buttons .button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+/* The two movie sections */
+.section {
+  max-width: 1280px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 44px 0 44px 0;
+}
+.section-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.section-title {
+  font-size: 24px;
+}
+.film-count {
+  color: #fb2c36;
+  font-size: 14px;
+  font-weight: 700;
+}
+.film-count-soon {
+  color: #4f39f6;
+}
+.section-note {
+  color: #6a7282;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+/* The row of movie cards */
+.movie-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.movie-poster {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background-color: #e5e7eb;
+}
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tag-rated {
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.tag-status {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.tag-showing {
+  background-color: #00bc7d;
+}
+.tag-soon {
+  background-color: #4f39f6;
+}
+
+/* The writing under the poster */
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px;
+}
+.movie-title {
+  font-size: 15px;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.movie-genre {
+  color: #6a7282;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.movie-last-day {
+  color: #00bc7d;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.movie-price {
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+.movie-info .button {
+  margin-top: auto;
+}
+@media (max-width: 1000px) {
+  .movie-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .movie-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================================
+   Booking page: seats, snacks and the summary
+   ============================================================ */
+
+/* Page layout */
+.booking {
+  max-width: 1024px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 40px 0 40px 0;
+}
+.back-link {
+  display: inline-block;
+  color: #99a1af;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+.booking-layout {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 32px;
+  align-items: start;
+}
+/* height: auto is load-bearing. The tag carries width="900" height="1200" so the
+   browser can reserve the right space before the file arrives, and those
+   attributes apply as CSS — which leaves the image with an explicit height.
+   aspect-ratio only ever sizes a dimension that is auto, so without this the
+   ratio is ignored, the poster renders 1200px tall, and object-fit: cover
+   slices a narrow strip out of the middle of it. */
+.booking-poster {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+.booking-block {
+  margin-bottom: 20px;
+}
+.film-title {
+  font-size: 20px;
+}
+.film-details {
+  color: #6a7282;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Hide the real tick boxes */
+.booking input {
+  display: none;
+}
+.field-label {
+  display: block;
+  color: #99a1af;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Date and showtime dropdowns */
+.dropdown {
+  width: 100%;
+  padding: 11px 14px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #101828;
+  cursor: pointer;
+}
+.dropdown:hover {
+  border-color: #fb2c36;
+}
+.dropdown:focus {
+  outline: none;
+  border-color: #fb2c36;
+}
+
+/* Before a date and a showtime are picked */
+.pick-first {
+  padding: 48px 20px;
+  background-color: #ffffff;
+  border: 1px dashed #e5e7eb;
+  border-radius: 16px;
+  color: #6a7282;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* The seat map */
+.seat-area h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.screen-curve {
+  height: 12px;
+  margin: 0 24px 0 24px;
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(to bottom, rgba(79, 57, 246, 0.35), rgba(79, 57, 246, 0));
+}
+.screen-word {
+  color: #99a1af;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-align: center;
+  margin: 4px 0 24px 0;
+}
+.seat-map {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.seat-row {
+  display: flex;
+  width: 340px;
+  gap: 4px;
+  margin: 0 auto 8px auto;
+}
+.row-letter {
+  width: 20px;
+  color: #99a1af;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: right;
+}
+.seat {
+  cursor: pointer;
+}
+.seat-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px 8px 2px 2px;
+  background-color: #e0e7ff;
+  color: #4f39f6;
+  font-size: 9px;
+  font-weight: 900;
+}
+.seat input:checked + .seat-box {
+  background-color: #fb2c36;
+  color: #ffffff;
+}
+.seat-box-sold {
+  background-color: #e5e7eb;
+  color: #99a1af;
+}
+
+/* The snacks */
+.snacks {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+.snacks h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.snacks-note {
+  color: #6a7282;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.snack-heading {
+  color: #99a1af;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 16px 0 8px 0;
+}
+.snack-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.snack {
+  cursor: pointer;
+}
+.snack-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 14px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+.snack-box:hover {
+  border-color: #fb2c36;
+}
+.snack input:checked + .snack-box {
+  background-color: #fef2f2;
+  border-color: #fb2c36;
+}
+.snack-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.snack-price {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* The total at the bottom */
+.order-summary {
+  margin-top: 24px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.summary-name {
+  color: #6a7282;
+  font-weight: 600;
+}
+.summary-value {
+  text-align: right;
+}
+.summary-total {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+.summary-amount {
+  font-size: 24px;
+  font-weight: 900;
+}
+.order-summary .button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 900;
+}
+@media (max-width: 1000px) {
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-poster {
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: 620px) {
+  .snack-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   Sign in and sign up forms
+   ============================================================ */
+
+/* Styles for the sign in and sign up boxes */
+.form-page {
+  padding: 56px 20px 80px 20px;
+}
+.form-card {
+  max-width: 448px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+}
+.form-card h1 {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+.form-intro {
+  color: #6a7282;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* One question in the form */
+.form-field {
+  margin-bottom: 16px;
+}
+.form-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.form-field input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #101828;
+}
+.form-field input::placeholder {
+  color: #99a1af;
+  font-weight: 500;
+}
+.form-field input:focus {
+  outline: none;
+  border-color: #fb2c36;
+}
+
+/* A password field with its show/hide eye.
+   The wrapper holds the input and the button and nothing else, so top: 50%
+   centres the button against the input rather than the label above it.
+
+   Both icons live in the button; CSS picks which one shows from aria-pressed,
+   so the script never has to swap any markup. Eye = "tap to reveal", eye with
+   a line through it = "tap to hide again".
+
+   The button is written into the HTML with the hidden attribute and
+   setupPasswordToggles() in js/common.js removes it, so a visitor with
+   JavaScript off never gets a button that cannot do anything. */
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 46px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #99a1af;
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  background-color: #f3f4f6;
+  color: #101828;
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid #fb2c36;
+  outline-offset: 1px;
+}
+
+.password-toggle svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* Masked: show the plain eye. */
+.password-toggle .icon-eye-off {
+  display: none;
+}
+
+/* Revealed: swap to the struck-through eye, and turn red as a reminder that
+   the password is readable over your shoulder. */
+.password-toggle[aria-pressed="true"] {
+  color: #fb2c36;
+}
+
+.password-toggle[aria-pressed="true"] .icon-eye {
+  display: none;
+}
+
+.password-toggle[aria-pressed="true"] .icon-eye-off {
+  display: block;
+}
+
+/* The "I agree" tick box */
+.agree-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #6a7282;
+  font-size: 13px;
+  margin: 18px 0 18px 0;
+}
+.agree-line input {
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  accent-color: #fb2c36;
+}
+
+/* The big button and the link below it */
+.form-card .button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: 16px;
+}
+.form-switch {
+  text-align: center;
+  color: #6a7282;
+  font-size: 14px;
+  margin-top: 16px;
+}
+.form-switch a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ============================================================
+   E-ticket
+   ============================================================ */
+
+/* Styles used only on this e-ticket page */
+.ticket-page {
+  max-width: 448px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 48px 0 48px 0;
+}
+
+/* The green tick at the top */
+.confirm-box {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.confirm-tick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px auto;
+  border-radius: 50%;
+  background-color: #dcfce7;
+  color: #00bc7d;
+  font-size: 30px;
+  font-weight: 900;
+}
+.confirm-box h1 {
+  font-size: 24px;
+}
+.confirm-box p {
+  color: #6a7282;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* The ticket itself */
+.ticket {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.ticket-header {
+  padding: 28px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #312e81, #6d28d9, #9333ea);
+}
+.ticket-brand {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.ticket-header h2 {
+  font-size: 20px;
+}
+.ticket-when {
+  color: #ddd6ff;
+  font-size: 14px;
+  margin-top: 6px;
+}
+.ticket-tear {
+  border-top: 1px dashed #e5e7eb;
+}
+.ticket-body {
+  padding: 24px 28px;
+}
+.ticket-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.ticket-label {
+  color: #99a1af;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.ticket-value {
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 4px;
+}
+.ticket-reference {
+  color: #fb2c36;
+  letter-spacing: 1px;
+}
+.ticket-value-small {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* The QR code */
+.ticket-qr {
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 16px;
+  text-align: center;
+}
+.ticket-qr img {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 10px auto;
+}
+.ticket-qr p {
+  color: #99a1af;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* The two buttons under the ticket */
+.ticket-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+.ticket-actions .button {
+  flex: 1;
+  padding: 12px;
+}
+@media (max-width: 620px) {
+  .ticket-actions {
+    flex-direction: column;
+  }
+}
+
+/* ============================================================
+   Terms page
+   ============================================================ */
+
+/* Styles used only on this terms page */
+.terms-page {
+  max-width: 768px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 48px 0 64px 0;
+}
+.terms-page h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.terms-intro {
+  color: #6a7282;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+.terms-block {
+  padding: 24px 24px 14px 24px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+.terms-kind {
+  display: block;
+  color: #fb2c36;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.terms-kind-snack {
+  color: #4f39f6;
+}
+.terms-block h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.terms-block p {
+  color: #6a7282;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   Staff pages: shared chrome, stats and panels
+   ============================================================ */
+
+/* Styles used on the two staff pages */
+.admin-page {
+  max-width: 900px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 40px 0 64px 0;
+}
+.admin-page h1 {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+.admin-intro {
+  color: #6a7282;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* The staff menu */
+.admin-menu {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.admin-menu a {
+  padding: 10px 18px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #6a7282;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.admin-menu a:hover {
+  border-color: #fb2c36;
+  color: #fb2c36;
+}
+.admin-menu a.current {
+  background-color: #fb2c36;
+  border-color: #fb2c36;
+  color: #ffffff;
+}
+
+/* The white boxes */
+.panel {
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+.panel h2 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.panel-note {
+  color: #6a7282;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* The number boxes across the top */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat {
+  flex: 1;
+  min-width: 180px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+.stat-name {
+  color: #99a1af;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.stat-figure {
+  font-size: 26px;
+  font-weight: 900;
+  margin-top: 6px;
+}
+.stat-extra {
+  color: #6a7282;
+  font-size: 12px;
+}
+.stat-money {
+  background-color: #fef2f2;
+  border-color: #ffd5d7;
+}
+.stat-money .stat-name,
+.stat-money .stat-figure {
+  color: #fb2c36;
+}
+
+/* The three snack order groups */
+.order-group {
+  padding-top: 18px;
+  margin-top: 18px;
+  border-top: 1px solid #e5e7eb;
+}
+.order-group-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.order-count {
+  padding: 1px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.count-ready {
+  background-color: #dcfce7;
+  color: #036e46;
+}
+.count-preparing {
+  background-color: #fef9c3;
+  color: #854d0e;
+}
+.count-sold {
+  background-color: #f3f4f6;
+  color: #4a5565;
+}
+.empty-note {
+  padding: 10px 0 2px 0;
+  color: #99a1af;
+  font-size: 14px;
+}
+
+/* One order inside a group */
+.order-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 14px 0 14px 0;
+  border-top: 1px solid #f3f4f6;
+}
+.order-left {
+  flex: 1;
+  min-width: 200px;
+}
+.order-items {
+  font-size: 15px;
+  font-weight: 700;
+}
+.order-who {
+  color: #4a5565;
+  font-size: 13px;
+}
+.order-price {
+  font-size: 16px;
+  font-weight: 900;
+}
+.order-status {
+  padding: 7px 10px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: #101828;
+  cursor: pointer;
+}
+.order-status:hover {
+  border-color: #fb2c36;
+}
+.order-status:focus {
+  outline: none;
+  border-color: #fb2c36;
+}
+.sold-tag {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background-color: #f3f4f6;
+  color: #4a5565;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ============================================================
+   Staff movies table and the add-movie form
+   ============================================================ */
+
+/* The table of movies */
+.movie-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.movie-table th {
+  padding: 0 10px 10px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #99a1af;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+}
+.movie-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.movie-table tr:last-child td {
+  border-bottom: none;
+}
+.right {
+  text-align: right;
+}
+.table-poster {
+  width: 40px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.cell-with-poster {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.movie-name {
+  display: block;
+  font-weight: 700;
+}
+.movie-sub {
+  display: block;
+  color: #6a7282;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* The little status labels */
+.label-showing,
+.label-soon {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.label-showing {
+  background-color: #dcfce7;
+  color: #036e46;
+}
+.label-soon {
+  background-color: #e0e7ff;
+  color: #4f39f6;
+}
+.remove-button {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  color: #6a7282;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.remove-button:hover {
+  border-color: #fb2c36;
+  background-color: #fef2f2;
+  color: #fb2c36;
+}
+
+/* The "add a movie" form.
+   The grid goes on .add-grid, the div that actually wraps the fields. This
+   rule used to say .add-form, but add-form is the FORM's id, not a class on
+   anything, so it matched nothing at all and the fields stacked in a single
+   column instead of the intended two. */
+.add-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 11px 14px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #101828;
+}
+.form-field input:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: #fb2c36;
+}
+@media (max-width: 620px) {
+  .hide-small {
+    display: none;
+  }
+
+  .add-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* ============================================================
+   Pieces the rebuild added: messages, loading and empty states
+   ============================================================ */
+
+/* Feedback under a form or an action. Hidden until there is something to say. */
+.form-message {
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.form-message-error {
+  background-color: #ffe2e2;
+  color: #c10007;
+}
+
+.form-message-success {
+  background-color: #dcfce7;
+  color: #036e46;
+}
+
+.form-message-notice {
+  background-color: #fef9c2;
+  color: #a65f00;
+}
+
+/* Shown against a single field that failed validation. */
+.field-error {
+  display: block;
+  color: #c10007;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.form-field input.invalid,
+.form-field select.invalid {
+  border-color: #c10007;
+}
+
+/* Placeholder text while something is being fetched, and when there is
+   genuinely nothing to show. */
+.loading-note,
+.empty-state {
+  padding: 28px 16px;
+  color: #6a7282;
+  font-size: 14px;
+  text-align: center;
+}
+
+.empty-state strong {
+  display: block;
+  color: #101828;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+button.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* The scanner's answer and the buttons staff press after reading it. */
+.scan-result {
+  max-width: 420px;
+  margin: 0 auto 12px auto;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.scan-result-good {
+  background-color: #dcfce7;
+  color: #008236;
+}
+
+.scan-result-used {
+  background-color: #fef9c2;
+  color: #a65f00;
+}
+
+.scan-result-bad {
+  background-color: #ffe2e2;
+  color: #c10007;
+}
+
+.scan-result-who {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.scan-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* The camera box on the scanner page. */
+.camera-panel {
+  text-align: center;
+}
+
+.camera-video {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 12px auto;
+  border-radius: 16px;
+  background-color: #101828;
+}
+
+.camera-message {
+  color: #6a7282;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* The "confirming your payment" page between PayMongo and the ticket. */
+.confirming-page {
+  max-width: 448px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 72px 0;
+  text-align: center;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 20px auto;
+  border: 4px solid #e5e7eb;
+  border-top-color: #fb2c36;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation-duration: 3s; }
+}
+
+/* The staff menu wraps on a narrow phone; keep it aligned left rather than
+   letting the last link hang off to the right. */
+@media (max-width: 620px) {
+  .admin-menu {
+    flex-wrap: wrap;
+  }
+}
+
+/* ============================================================
+   Utilities — last on purpose
+   ============================================================ */
+
+/*
+ * .hidden has to beat any component rule that sets its own display, and a
+ * plain class selector only wins over another plain class selector by coming
+ * later in the file. Keep this block at the bottom: when it sat higher up,
+ * .scan-actions and .ticket-actions (both display: flex) quietly overrode it
+ * and their buttons showed when they were supposed to be put away.
+ */
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================
+   Mobile navigation — hamburger and drawer
+   ============================================================ */
+
+/*
+ * The bar holds six links for a manager. That is fine at desk width and
+ * hopeless on a phone, so below the breakpoint the links and the sign-in
+ * buttons move into a drawer and the bar keeps only the logo and this button.
+ * The script moves the real elements rather than copying them, so whatever is
+ * in the bar is what opens in the drawer — including the Sign Out button and
+ * the handler already attached to it.
+ */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  border-color: #fb2c36;
+}
+
+/* Three bars that become an X when the drawer is open. */
+.menu-toggle span {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #101828;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.menu-toggle span::before,
+.menu-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #101828;
+  transition: transform 0.18s ease;
+}
+
+.menu-toggle span::before {
+  transform: translateY(-6px);
+}
+
+.menu-toggle span::after {
+  transform: translateY(6px);
+}
+
+.menu-toggle[aria-expanded="true"] span {
+  background-color: transparent;
+}
+
+.menu-toggle[aria-expanded="true"] span::before {
+  transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span::after {
+  transform: rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-toggle span,
+  .menu-toggle span::before,
+  .menu-toggle span::after {
+    transition: none;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Only shown when there is actually something to put in it — a back-office
+     page keeps its own pill row and needs no drawer. */
+  .menu-toggle.is-needed {
+    display: inline-flex;
+  }
+
+  /* :not([hidden]) is doing real work here. A bare .mobile-drawer rule sets
+     display: flex, which is an author style and so beats the browser's own
+     [hidden] { display: none } no matter what the script does — the drawer
+     stayed on screen with hidden="true" set on it. Matching only while it is
+     not hidden leaves the browser's rule to hide it. */
+  .mobile-drawer:not([hidden]) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 12px 24px rgba(16, 24, 40, 0.08);
+  }
+
+  /* Inside the drawer the links stack and get a full-width tap target,
+     rather than sitting in a row that would wrap awkwardly. */
+  .mobile-drawer .menu {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mobile-drawer .menu a {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .mobile-drawer .auth-buttons {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid #f3f4f6;
+  }
+
+  /* A <button> and an <a class="button"> work out different heights from the
+     same padding, so Sign Out came out shorter than the links above it. The
+     line height is stated to settle both on the same 48px tap target. */
+  .mobile-drawer .auth-buttons .button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    line-height: 24px;
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your E-Ticket - Cinemax</title>
+  <!-- The font files come from a second host, so the connection to it is opened
+       while the page is still parsing rather than after the stylesheet lands. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/cinemax.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <nav class="menu">
+        <a href="/#now-showing">Now Showing</a>
+        <a href="/#coming-soon">Upcoming Shows</a>
+      </nav>
+      <div class="auth-buttons"></div>
+    </div>
+  </header>
+
+  <main class="ticket-page">
+
+    <p class="loading-note" id="loading">Loading your ticket…</p>
+    <p class="form-message hidden" id="page-message"></p>
+
+    <div class="hidden" id="ticket-wrap">
+
+      <!-- Confirmation message -->
+      <div class="confirm-box">
+        <div class="confirm-tick">✓</div>
+        <h1>Booking Confirmed!</h1>
+        <p>Your e-ticket is ready below.</p>
+      </div>
+
+      <!-- E-ticket -->
+      <div class="ticket">
+
+        <div class="ticket-header">
+          <p class="ticket-brand">CINEMAX</p>
+          <h2 id="movie-title"></h2>
+          <p class="ticket-when" id="showtime"></p>
+        </div>
+
+        <div class="ticket-tear"></div>
+
+        <div class="ticket-body">
+
+          <div class="ticket-pair">
+            <div>
+              <p class="ticket-label">Reference No.</p>
+              <p class="ticket-value ticket-reference" id="reference"></p>
+            </div>
+            <div>
+              <p class="ticket-label">Seat(s)</p>
+              <p class="ticket-value" id="seats"></p>
+            </div>
+          </div>
+
+          <div class="ticket-pair">
+            <div>
+              <p class="ticket-label">Name</p>
+              <p class="ticket-value ticket-value-small" id="customer-name"></p>
+            </div>
+            <div>
+              <p class="ticket-label">Total Paid</p>
+              <p class="ticket-value" id="total"></p>
+            </div>
+          </div>
+
+          <div class="ticket-pair" id="snack-pair">
+            <div>
+              <p class="ticket-label">Snacks</p>
+              <p class="ticket-value ticket-value-small" id="snacks"></p>
+            </div>
+            <div>
+              <p class="ticket-label">Pickup</p>
+              <p class="ticket-value ticket-value-small">Concession counter</p>
+            </div>
+          </div>
+
+          <!-- Staff scan this at the door -->
+          <div class="ticket-qr">
+            <img id="qr" src="" alt="">
+            <p id="qr-caption"></p>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="form-message form-message-notice hidden" id="used-note"></p>
+
+      <div class="ticket-actions">
+        <a class="button button-outline" href="/">Back to Movies</a>
+        <a class="button button-red" id="book-another" href="/">Book Another</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <p class="footer-text">
+        Your next movie experience starts here. <br>
+        Book your seats, enjoy your snacks, and let the show begin.
+      </p>
+      <p class="footer-copyright">© 2026 Cinemax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/ticket.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - Cinemax</title>
+  <!-- The font files come from a second host, so the connection to it is opened
+       while the page is still parsing rather than after the stylesheet lands. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/cinemax.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <nav class="menu">
+        <a href="/#now-showing">Now Showing</a>
+        <a href="/#coming-soon">Upcoming Shows</a>
+      </nav>
+      <div class="auth-buttons"></div>
+    </div>
+  </header>
+
+  <main class="admin-page">
+
+    <h1>My Bookings</h1>
+    <p class="admin-intro" id="intro">Your tickets, newest first.</p>
+
+    <p class="form-message hidden" id="page-message"></p>
+
+    <section class="panel">
+      <p class="loading-note" id="loading">Loading your bookings…</p>
+      <div id="bookings"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <p class="footer-text">
+        Your next movie experience starts here. <br>
+        Book your seats, enjoy your snacks, and let the show begin.
+      </p>
+      <p class="footer-copyright">© 2026 Cinemax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/account.js"></script>
+</body>
+</html>

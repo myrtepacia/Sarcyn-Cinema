@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies - Cinemax</title>
+  <!-- The font files come from a second host, so the connection to it is opened
+       while the page is still parsing rather than after the stylesheet lands. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/cinemax.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <nav class="menu"></nav>
+      <div class="auth-buttons"></div>
+    </div>
+  </header>
+
+  <main class="admin-page">
+
+    <h1>Movies</h1>
+    <p class="admin-intro">Add a movie, upload its poster, or take one off the listings.</p>
+
+    <nav class="admin-menu"></nav>
+
+    <p class="form-message hidden" id="page-message"></p>
+
+    <!-- Counts -->
+    <div class="stat-row">
+
+      <div class="stat">
+        <p class="stat-name">Movies Listed</p>
+        <p class="stat-figure" id="count-total">—</p>
+        <p class="stat-extra" id="count-showing-note">&nbsp;</p>
+      </div>
+
+      <div class="stat">
+        <p class="stat-name">Now Showing</p>
+        <p class="stat-figure" id="count-showing">—</p>
+        <p class="stat-extra">On sale today</p>
+      </div>
+
+      <div class="stat">
+        <p class="stat-name">Upcoming</p>
+        <p class="stat-figure" id="count-upcoming">—</p>
+        <p class="stat-extra">Not on sale yet</p>
+      </div>
+
+      <div class="stat">
+        <p class="stat-name">Tickets Sold</p>
+        <p class="stat-figure" id="count-tickets">—</p>
+        <p class="stat-extra">Across all movies</p>
+      </div>
+
+    </div>
+
+    <!-- All movies -->
+    <section class="panel">
+
+      <h2>All movies</h2>
+      <p class="panel-note">Everything currently listed on the website.</p>
+
+      <p class="loading-note" id="movies-loading">Loading the listings…</p>
+
+      <table class="movie-table hidden" id="movie-table">
+        <thead>
+          <tr>
+            <th>Movie</th>
+            <th class="hide-small">Status</th>
+            <th class="right hide-small">Price</th>
+            <th class="right">Sold</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="movie-rows"></tbody>
+      </table>
+
+    </section>
+
+    <!-- Add a movie -->
+    <section class="panel">
+
+      <h2>Add a movie</h2>
+      <p class="panel-note">Fill in the details, choose a poster, and press Add movie.</p>
+
+      <p class="form-message hidden" id="add-message"></p>
+
+      <form id="add-form" novalidate>
+
+        <div class="add-grid">
+
+          <div class="form-field">
+            <label for="new-title">Movie title</label>
+            <input id="new-title" type="text" placeholder="The Reckoning" required>
+          </div>
+
+          <div class="form-field">
+            <label for="new-genre">Genre</label>
+            <input id="new-genre" type="text" placeholder="Action, Thriller" required>
+          </div>
+
+          <div class="form-field">
+            <label for="new-length">Length</label>
+            <input id="new-length" type="text" placeholder="1h 58m" required>
+          </div>
+
+          <div class="form-field">
+            <label for="new-rating">Rating</label>
+            <select id="new-rating">
+              <option>G</option>
+              <option>PG</option>
+              <option selected>PG-13</option>
+              <option>R-13</option>
+              <option>R-16</option>
+              <option>R-18</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="new-price">Ticket price in pesos</label>
+            <input id="new-price" type="number" min="1" step="10" placeholder="220" required>
+          </div>
+
+          <div class="form-field">
+            <label for="new-status">Where it goes</label>
+            <select id="new-status">
+              <option value="now_showing">Now Showing</option>
+              <option value="upcoming">Upcoming Shows</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="new-note">Status note</label>
+            <input id="new-note" type="text" placeholder="Until Dec 12, 2026">
+          </div>
+
+          <div class="form-field">
+            <label for="new-poster">Poster image</label>
+            <input id="new-poster" type="file" accept="image/jpeg,image/png,image/webp">
+          </div>
+
+        </div>
+
+        <button class="button button-red" type="submit" id="add-button">Add movie</button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <p class="footer-text">
+        Your next movie experience starts here. <br>
+        Book your seats, enjoy your snacks, and let the show begin.
+      </p>
+      <p class="footer-copyright">© 2026 Cinemax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/admin-movies.js"></script>
+</body>
+</html>

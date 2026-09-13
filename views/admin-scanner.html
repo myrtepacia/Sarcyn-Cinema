@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Scanner - Cinemax</title>
+  <!-- The font files come from a second host, so the connection to it is opened
+       while the page is still parsing rather than after the stylesheet lands. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/cinemax.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <nav class="menu"></nav>
+      <div class="auth-buttons"></div>
+    </div>
+  </header>
+
+  <main class="admin-page">
+
+    <h1>Ticket Scanner</h1>
+    <p class="admin-intro">Check tickets at the door. <span id="signed-in-as"></span></p>
+
+    <nav class="admin-menu"></nav>
+
+    <div class="panel camera-panel">
+
+      <p class="panel-note">Point the camera at the QR code on the ticket</p>
+
+      <video class="camera-video" id="camera-video" autoplay playsinline muted></video>
+
+      <p class="scan-result hidden" id="scan-result"></p>
+
+      <div class="scan-actions hidden" id="scan-actions">
+        <button class="button button-red" id="confirm-booking" type="button">Confirm booking</button>
+        <button class="button button-outline" id="cancel-booking" type="button">Cancel</button>
+      </div>
+
+      <p class="camera-message" id="camera-message"></p>
+
+      <button class="button button-red" id="start-camera" type="button">Start camera</button>
+      <button class="button button-outline hidden" id="close-camera" type="button">Close camera</button>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <p class="footer-text">
+        Your next movie experience starts here. <br>
+        Book your seats, enjoy your snacks, and let the show begin.
+      </p>
+      <p class="footer-copyright">© 2026 Cinemax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Reads QR codes out of the camera picture -->
+  <script src="/js/common.js"></script>
+  <script src="/js/admin-scanner.js"></script>
+  <!-- Reads QR codes out of the camera picture. Loaded last, and not with
+       defer, on purpose: admin-scanner.js runs first and immediately suspends
+       on its own await, so the parser's very next act is executing this file.
+       A network reply cannot arrive in the middle of that, so jsQR is always
+       defined before the camera can open — while these 256KB no longer sit in
+       front of the sign-in check and the top bar. -->
+  <script src="/js/jsQR.js"></script>
+</body>
+</html>

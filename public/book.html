@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Tickets - Cinemax</title>
+  <!-- The font files come from a second host, so the connection to it is opened
+       while the page is still parsing rather than after the stylesheet lands. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/cinemax.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <nav class="menu">
+        <a href="/#now-showing">Now Showing</a>
+        <a href="/#coming-soon">Upcoming Shows</a>
+      </nav>
+      <div class="auth-buttons"></div>
+    </div>
+  </header>
+
+  <main class="booking">
+
+    <a class="back-link" href="/">← Back to movies</a>
+
+    <p class="form-message hidden" id="page-message"></p>
+    <p class="loading-note" id="page-loading">Loading this movie…</p>
+
+    <div class="booking-layout hidden" id="booking-layout">
+
+      <!-- Movie, date and showtime -->
+      <div class="booking-left">
+
+        <img class="booking-poster" id="poster" src="" alt="" width="900" height="1200" fetchpriority="high" decoding="async">
+
+        <div class="booking-block">
+          <h1 class="film-title" id="film-title"></h1>
+          <p class="film-details" id="film-details"></p>
+        </div>
+
+        <div class="booking-block">
+          <label class="field-label" for="date">Date</label>
+          <select class="dropdown" id="date">
+            <option value="">Choose a date</option>
+          </select>
+        </div>
+
+        <div class="booking-block">
+          <label class="field-label" for="showtime">Showtime</label>
+          <select class="dropdown" id="showtime">
+            <option value="">Choose a showtime</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Seats and snacks -->
+      <div class="seat-area">
+
+        <p class="pick-first" id="pick-first">Choose a date and a showtime to see the seats and the snacks</p>
+
+        <div class="hidden" id="seats-and-snacks">
+
+          <h3>Choose Your Seats</h3>
+          <div class="screen-curve"></div>
+          <p class="screen-word">SCREEN</p>
+
+          <p class="loading-note hidden" id="seats-loading">Checking which seats are free…</p>
+          <div class="seat-map" id="seat-map"></div>
+
+          <h3>Pre-order Your Snacks</h3>
+          <p class="snacks-note">Skip the queue. Your snacks are ready at the counter when you arrive.</p>
+          <div id="snack-groups"></div>
+
+          <div class="order-summary">
+
+            <div class="summary-line">
+              <span class="summary-name">Date and showtime</span>
+              <span class="summary-value" id="summary-when">Choose a date and showtime</span>
+            </div>
+
+            <div class="summary-line">
+              <span class="summary-name">Selected seats</span>
+              <span class="summary-value" id="summary-seats">Tap the seats above</span>
+            </div>
+
+            <div class="summary-line">
+              <span class="summary-name">Snacks</span>
+              <span class="summary-value" id="summary-snacks">Tick any items above</span>
+            </div>
+
+            <div class="summary-line summary-total">
+              <span class="summary-name" id="summary-tickets">0 tickets</span>
+              <span class="summary-amount" id="summary-amount">₱0</span>
+            </div>
+
+            <p class="form-message hidden" id="booking-message"></p>
+
+            <button class="button button-red" type="button" id="confirm">Confirm Booking</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="logo" href="/">CINEMAX</a>
+      <p class="footer-text">
+        Your next movie experience starts here. <br>
+        Book your seats, enjoy your snacks, and let the show begin.
+      </p>
+      <p class="footer-copyright">© 2026 Cinemax. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/book.js"></script>
+</body>
+</html>
