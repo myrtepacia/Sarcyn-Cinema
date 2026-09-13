@@ -1,11 +1,5 @@
 "use strict";
 
-/**
- * Empties every application table and reseeds from scratch. Development
- * convenience only — it destroys every booking. Refuses to run against a
- * production database.
- */
-
 const { pool, migrate, closePool } = require("../src/db");
 const { config } = require("../src/config");
 
