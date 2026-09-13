@@ -1,13 +1,5 @@
 "use strict";
 
-/**
- * Fills an empty database with the catalogue the static site used to hardcode,
- * plus one account per role so the staff pages can be opened straight away.
- *
- * Safe to re-run: it skips anything already present, so it tops up a partly
- * seeded database rather than duplicating it. Use `npm run reset` to start over.
- */
-
 const bcrypt = require("bcryptjs");
 
 const { transaction, migrate, closePool } = require("../src/db");
@@ -170,10 +162,6 @@ async function seedMovies(client) {
   }
 }
 
-/**
- * Gives every showing movie five days of showtimes, and every showtime a full
- * seat map. Upcoming movies get none, which is what makes them unbookable.
- */
 async function seedShowtimesAndSeats(client) {
   const moviesResult = await client.query(
     "SELECT id, slug FROM movies WHERE status = 'now_showing' AND archived_at IS NULL"
