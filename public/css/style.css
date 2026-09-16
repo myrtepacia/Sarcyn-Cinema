@@ -1,14 +1,3 @@
-/* Cinemax stylesheet.
- *
- * Every page used to carry its own copy of these rules, so changing the red
- * accent meant editing thirteen files. They live here once now.
- */
-
-/* ============================================================
-   Home page: the movie grid
-   ============================================================ */
-
-/* Styles that every page of the website uses */
 * {
   box-sizing: border-box;
 }
